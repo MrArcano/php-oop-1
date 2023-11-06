@@ -13,8 +13,7 @@ require_once __DIR__ . "/Models/db.php";
 
 $movies[3] -> setImage(new Media("Http","Nome"));
 
-// var_dump($movies[3]);
-
+// var_dump(implode(" - ",$movies[2] -> actors)-> name);
 
 ?>
 
@@ -44,8 +43,10 @@ $movies[3] -> setImage(new Media("Http","Nome"));
         <p class="card-text"><?php echo $movie -> year?></p>
         <p class="card-text"><?php echo $movie -> rating?></p>
         <p class="card-text"><?php echo implode(" - ",$movie -> category)?></p>
-        
-        <p class="card-text"><?php echo ($movie->actors) ? (implode(" - ",$movie -> actors -> name)) : ("undefined") ?></p>
+
+        <?php foreach ($movie -> actors as $actor): ?>
+          <span class="card-text"><?php echo $actor -> name ? ($actor -> name)." - " : ("undefined") ?></span>
+        <?php endforeach ?>
         
       </div>
     </div>
