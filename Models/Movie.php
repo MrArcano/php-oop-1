@@ -11,7 +11,7 @@ class Movie{
     $this->image = $_image;
   }
 
-  public function __construct(string $_title,array $_category,int $_year,float $_rating, Media $_image = null, array $_actors = null){
+  public function __construct(string $_title,array $_category,int $_year,float $_rating, Media $_image = null, array $_actors = []){
     $this->title = $_title;
     $this->category = $_category;
     $this->year = $_year;
