@@ -1,23 +1,14 @@
 <?php 
-class Movie{
-  public $title;
-  public $category;
-  public $year;
-  public $rating;
-  public $image;
-  public $actors;
+class Movie extends Production {
+  public $published_year;
+  public $running_time;
+  
+  public function __construct(int $_published_year,int $_running_time,string $_title,array $_category,float $_rating, Media $_image = null, array $_actors = []){
 
-  public function setImage(Media $_image){
-    $this->image = $_image;
-  }
+    $this->published_year = $_published_year;
+    $this->running_time = $_running_time;
 
-  public function __construct(string $_title,array $_category,int $_year,float $_rating, Media $_image = null, array $_actors = []){
-    $this->title = $_title;
-    $this->category = $_category;
-    $this->year = $_year;
-    $this->rating = $_rating;
-    $this->image = $_image;
-    $this->actors = $_actors;
+    parent::__construct($_title,$_category,$_rating,$_image,$_actors);
   }
 };
 

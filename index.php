@@ -1,10 +1,13 @@
 <?php 
 
+require_once __DIR__ . "/Models/Production.php";
+require_once __DIR__ . "/Models/Movie.php";
+require_once __DIR__ . "/Models/TvSerie.php";
 require_once __DIR__ . "/Models/Media.php";
 require_once __DIR__ . "/Models/Actor.php";
-require_once __DIR__ . "/Models/Movie.php";
 
 require_once __DIR__ . "/Models/db.php";
+
 
 ?>
 
@@ -26,23 +29,27 @@ require_once __DIR__ . "/Models/db.php";
 
   <div class="container d-flex gap-3 ">
 
-  <?php foreach ($movies as $movie):?>
+  <?php foreach ($productions as $production):?>
 
     <!-- card -->
     <div class="card" style="width: 18rem;">
-      <img src="<?php echo $movie -> image -> src_image ?? 'img/no_poster.jpg'?>" class="card-img-top" alt="<?php echo $movie -> image -> name_image ?? 'NotFound'?>">
+      <img src="<?php echo $production -> image -> src_image ?? 'img/no_poster.jpg'?>" class="card-img-top" alt="<?php echo $production -> image -> name_image ?? 'NotFound'?>">
       <div class="card-body">
-        <h4 class="card-title"><?php echo $movie -> title ?></h4>
-        <p class="card-text"><strong>Year:</strong> <?php echo $movie -> year?></p>
-        <p class="card-text"><strong>Rating:</strong> <?php echo $movie -> rating?></p>
-        <p class="card-text"><strong>Genres:</strong> <?php echo implode(" - ",$movie -> category)?></p>
+        <h6 class="card-text text-center mb-3 text-bg-dark"><?php echo get_class($production) ?></h6>
+        <h4 class="card-title"><?php echo $production -> title ?></h4>
+        <p class="card-text">
+          <strong>Year: </strong>
+          <?php echo $production -> published_year?>
+        </p>
+        <p class="card-text"><strong>Rating:</strong> <?php echo $production -> rating?></p>
+        <p class="card-text"><strong>Genres:</strong> <?php echo implode(" - ",$production -> category)?></p>
 
         <!-- se l'array degli attori è vuoto allora scrivo undefined -->
         <p class="card-text">
-          <strong>Actors: </strong><?php echo count($movie -> actors) < 1 ? "undefined" : "" ; ?>
+          <strong>Actors: </strong><?php echo count($production -> actors) < 1 ? "undefined" : "" ; ?>
         </p>
         
-        <?php foreach ($movie -> actors as $index => $actor): ?>
+        <?php foreach ($production -> actors as $index => $actor): ?>
           <p class="card-text">
             <?php 
               echo $actor -> name . " " . $actor -> lastname . ", Age: " . $actor -> age . ", Gender: " . $actor -> gender;
