@@ -11,7 +11,7 @@ $productions = [
                 new Actor("Michael","Keaton",70,"M"),
                 new Actor("Jack","Nicholson",84,"M"),
               ]
-              ),
+            ),
 
   new Movie(  2002,
               125,
@@ -25,7 +25,7 @@ $productions = [
                 new Actor("Willem","Dafoe", 66 , "M"),
                 new Actor("James","Franco", 43 , "M"),
               ]
-              ),
+            ),
 
   new Movie(  2001,
               88,
@@ -38,20 +38,44 @@ $productions = [
                 new Actor("Josh","Hartnett", 42 , "M"),
                 new Actor("Kate","Beckinsale", 47 , "F"),
               ]
-              ),
+            ),
   new TvSerie(  2007,
-                2012,
+                "2012",
                 91,
                 5,
                 "Chuck",
                 ["Drama","Action","Commedy"],
                 5,
-                new Media("src","name"),
+                new Media("img/chuck.jpg","Chuck"),
                 [
                   new Actor("Zachary","Levi", 40 , "M"),
                   new Actor("Yvonne","Strahovski", 39 , "F"),
                 ]
-              )
+              ),
+  new TvSerie(  2022,
+                "in produzione",
+                20,
+                2,
+                "Star Trek: Strange New Worlds",
+                ["Adventure","Drama","Science fiction"],
+                5,
+                new Media("img/star_trek_strange_new_worlds.jpg","Star Trek: Strange New Worlds"),
+                [
+                  new Actor("Marco","Vivio", 40 , "M"),
+                ]
+              ),
+  new TvSerie(  2021,
+                "in produzione",
+                12,
+                2,
+                "Loki",
+                ["Adventure","Action","Fantasy"],
+                5,
+                new Media("img/loki.jpg","Loki"),
+                [
+                  new Actor("Marco","Vivio", 40 , "M"),
+                ]
+              ),
   
 ];
 ?>

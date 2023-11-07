@@ -27,41 +27,48 @@ require_once __DIR__ . "/Models/db.php";
 <body>
   <h1 class=" text-center ">PHP MOVIE OOP</h1>
 
-  <div class="container d-flex gap-3 ">
-
-  <?php foreach ($productions as $production):?>
-
-    <!-- card -->
-    <div class="card" style="width: 18rem;">
-      <img src="<?php echo $production -> image -> src_image ?? 'img/no_poster.jpg'?>" class="card-img-top" alt="<?php echo $production -> image -> name_image ?? 'NotFound'?>">
-      <div class="card-body">
-        <h6 class="card-text text-center mb-3 text-bg-dark"><?php echo get_class($production) ?></h6>
-        <h4 class="card-title"><?php echo $production -> title ?></h4>
-        <p class="card-text">
-          <strong>Year: </strong>
-          <?php echo $production -> published_year?>
-        </p>
-        <p class="card-text"><strong>Rating:</strong> <?php echo $production -> rating?></p>
-        <p class="card-text"><strong>Genres:</strong> <?php echo implode(" - ",$production -> category)?></p>
-
-        <!-- se l'array degli attori è vuoto allora scrivo undefined -->
-        <p class="card-text">
-          <strong>Actors: </strong><?php echo count($production -> actors) < 1 ? "undefined" : "" ; ?>
-        </p>
-        
-        <?php foreach ($production -> actors as $index => $actor): ?>
-          <p class="card-text">
-            <?php 
-              echo $actor -> name . " " . $actor -> lastname . ", Age: " . $actor -> age . ", Gender: " . $actor -> gender;
-            ?>
-          </p>
-        <?php endforeach ?>
-        
-      </div>
+  <div class="container">
+    <div class="row row-cols-3">
+      <?php foreach ($productions as $production):?>
+        <div class="col">
+          <!-- card -->
+          <div class="card" style="width: 18rem;">
+            <img src="<?php echo $production -> image -> src_image ?? 'img/no_poster.jpg'?>" class="card-img-top" alt="<?php echo $production -> image -> name_image ?? 'NotFound'?>">
+            <div class="card-body">
+              <h6 class="card-text text-center mb-3 text-bg-dark"><?php echo get_class($production) ?></h6>
+              <h4 class="card-title"><?php echo $production -> title ?></h4>
+              <p class="card-text">
+                <strong>Year: </strong>
+                <?php echo get_class($production) === "Movie" ? $production -> published_year : $production -> aired_from_year . " - " . $production -> aired_to_year?>
+              </p>
+      
+              <p class="card-text">
+                <?php echo get_class($production) === "TvSerie"? 
+                "<strong>Seasons: </strong>" . $production -> number_of_seasons .
+                "<strong> Episodes: </strong>" . $production -> number_of_episodes
+                : ""?>
+              </p>
+      
+              <p class="card-text"><strong>Rating:</strong> <?php echo $production -> rating?></p>
+              <p class="card-text"><strong>Genres:</strong> <?php echo implode(" - ",$production -> category)?></p>
+      
+              <!-- se l'array degli attori è vuoto allora scrivo undefined -->
+              <p class="card-text">
+                <strong>Actors: </strong><?php echo count($production -> actors) < 1 ? "undefined" : "" ; ?>
+              </p>
+              
+              <?php foreach ($production -> actors as $index => $actor): ?>
+                <p class="card-text">
+                  <?php 
+                    echo $actor -> name . " " . $actor -> lastname . ", Age: " . $actor -> age . ", Gender: " . $actor -> gender;
+                  ?>
+                </p>
+              <?php endforeach?>
+            </div>
+          </div>
+        </div>
+      <?php endforeach?>
     </div>
-
-  <?php endforeach?>
-
   </div>
 
 </body>
