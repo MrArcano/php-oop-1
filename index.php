@@ -30,9 +30,9 @@ require_once __DIR__ . "/Models/db.php";
   <div class="container">
     <div class="row row-cols-3">
       <?php foreach ($productions as $production):?>
-        <div class="col">
+        <div class="col py-3">
           <!-- card -->
-          <div class="card" style="width: 18rem;">
+          <div class="card m-auto h-100 " style="width: 18rem;">
             <img src="<?php echo $production -> image -> src_image ?? 'img/no_poster.jpg'?>" class="card-img-top" alt="<?php echo $production -> image -> name_image ?? 'NotFound'?>">
             <div class="card-body">
               <h6 class="card-text text-center mb-3 text-bg-dark"><?php echo get_class($production) ?></h6>
@@ -57,13 +57,16 @@ require_once __DIR__ . "/Models/db.php";
                 <strong>Actors: </strong><?php echo count($production -> actors) < 1 ? "undefined" : "" ; ?>
               </p>
               
-              <?php foreach ($production -> actors as $index => $actor): ?>
-                <p class="card-text">
-                  <?php 
-                    echo $actor -> name . " " . $actor -> lastname . ", Age: " . $actor -> age . ", Gender: " . $actor -> gender;
-                  ?>
-                </p>
-              <?php endforeach?>
+              <ul>
+                <?php foreach ($production -> actors as $index => $actor): ?>
+                  <li class="card-text">
+                    <?php 
+                      echo $actor -> get_FullName();
+                    ?>
+                  </li>
+                <?php endforeach?>
+              </ul>
+
             </div>
           </div>
         </div>

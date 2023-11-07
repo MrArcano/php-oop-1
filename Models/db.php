@@ -62,6 +62,7 @@ $productions = [
                 new Media("img/star_trek_strange_new_worlds.jpg","Star Trek: Strange New Worlds"),
                 [
                   new Actor("Marco","Vivio", 40 , "M"),
+                  new Actor("David","Chevalier", 40 , "M"),
                 ]
               ),
   new TvSerie(  2021,
@@ -73,7 +74,8 @@ $productions = [
                 5,
                 new Media("img/loki.jpg","Loki"),
                 [
-                  new Actor("Marco","Vivio", 40 , "M"),
+                  new Actor("Tom","Hiddleston", 40 , "M"),
+                  new Actor("Sophia","Di Martino", 40 , "F"),
                 ]
               ),
   
