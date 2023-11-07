@@ -24,7 +24,7 @@ require_once __DIR__ . "/Models/db.php";
   <link rel="stylesheet" href="css/style.css">
   <title>PHP MOVIE OOP</title>
 </head>
-<body>
+<body class="text-bg-dark">
   <h1 class=" text-center ">PHP MOVIE OOP</h1>
 
   <div class="container">
@@ -32,7 +32,7 @@ require_once __DIR__ . "/Models/db.php";
       <?php foreach ($productions as $production):?>
         <div class="col py-3">
           <!-- card -->
-          <div class="card m-auto h-100 " style="width: 18rem;">
+          <div class="card bg-dark-subtle m-auto h-100 " style="width: 18rem;">
             <img src="<?php echo $production -> image -> src_image ?? 'img/no_poster.jpg'?>" class="card-img-top" alt="<?php echo $production -> image -> name_image ?? 'NotFound'?>">
             <div class="card-body">
               <h6 class="card-text text-center mb-3 text-bg-dark"><?php echo get_class($production) ?></h6>
@@ -56,7 +56,7 @@ require_once __DIR__ . "/Models/db.php";
               <p class="card-text">
                 <strong>Actors: </strong><?php echo count($production -> actors) < 1 ? "undefined" : "" ; ?>
               </p>
-              
+
               <ul>
                 <?php foreach ($production -> actors as $index => $actor): ?>
                   <li class="card-text">
