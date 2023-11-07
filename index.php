@@ -41,13 +41,14 @@ require_once __DIR__ . "/Models/db.php";
                 <strong>Year: </strong>
                 <?php echo get_class($production) === "Movie" ? $production -> published_year : $production -> aired_from_year . " - " . $production -> aired_to_year?>
               </p>
-      
-              <p class="card-text">
-                <?php echo get_class($production) === "TvSerie"? 
-                "<strong>Seasons: </strong>" . $production -> number_of_seasons .
-                "<strong> Episodes: </strong>" . $production -> number_of_episodes
-                : ""?>
-              </p>
+
+              <?php if(get_class($production) === "TvSerie"): ?>
+                <p class="card-text">
+                  <span class="me-3"><strong>Seasons: </strong><?php echo $production -> number_of_seasons ?></span>
+                  <span><strong>Episodes: </strong><?php echo $production -> number_of_episodes ?></span>
+                </p>
+              <?php endif ?>
+
       
               <p class="card-text"><strong>Rating:</strong> <?php echo $production -> rating?></p>
               <p class="card-text"><strong>Genres:</strong> <?php echo implode(" - ",$production -> category)?></p>
