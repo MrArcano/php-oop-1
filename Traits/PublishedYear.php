@@ -7,7 +7,7 @@ trait Published_Year
   public $aired_to_year; 
 
   public function getYearStr(){
-    return "$this->published_year - $this->aired_to_year";
+    return "$this->published_year";
   }
   
 }

@@ -1,8 +1,6 @@
 <?php 
 class TvSerie extends Production {
 
-  use Published_Year;
-  
   public $number_of_episodes; 
   public $number_of_seasons; 
   

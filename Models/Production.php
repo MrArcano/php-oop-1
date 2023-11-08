@@ -1,6 +1,9 @@
 <?php
 
 class Production {
+
+  use Published_Year;
+  
   public $title;
   public $category;
   public $rating;
