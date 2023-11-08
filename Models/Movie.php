@@ -1,6 +1,7 @@
 <?php 
 class Movie extends Production {
-  public $published_year;
+
+  use Published_Year;
   public $running_time;
   
   public function __construct(int $_published_year,int $_running_time,string $_title,array $_category,float $_rating, Media $_image = null, array $_actors = []){
@@ -10,6 +11,12 @@ class Movie extends Production {
 
     parent::__construct($_title,$_category,$_rating,$_image,$_actors);
   }
+
+
+  public function getYearStr(){
+    return $this->published_year;
+  }
+
 };
 
 ?>

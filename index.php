@@ -1,5 +1,7 @@
 <?php 
 
+require_once __DIR__ ."/Traits/PublishedYear.php";
+
 require_once __DIR__ . "/Models/Production.php";
 require_once __DIR__ . "/Models/Movie.php";
 require_once __DIR__ . "/Models/TvSerie.php";
@@ -39,7 +41,7 @@ require_once __DIR__ . "/Models/db.php";
               <h4 class="card-title"><?php echo $production -> title ?></h4>
               <p class="card-text">
                 <strong>Year: </strong>
-                <?php echo get_class($production) === "Movie" ? $production -> published_year : $production -> aired_from_year . " - " . $production -> aired_to_year?>
+                <?php echo $production -> getYearStr()?>
               </p>
 
               <?php if(get_class($production) === "TvSerie"): ?>
